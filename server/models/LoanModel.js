@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const loanSchema = new mongoose.Schema({
   amount: {
     type: Number,
@@ -37,7 +36,5 @@ const loanSchema = new mongoose.Schema({
     default: "PENDING",
   },
 });
-
 const Loan = mongoose.model("Loan", loanSchema);
-
 export default Loan;

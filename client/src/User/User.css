@@ -1,7 +1,6 @@
 *{
     font-family: serif;
 }
-/* Admin layout css starts from here */
 .user-nav-logo{
     font-weight: 300;
 }
@@ -18,10 +17,6 @@
   border-top: 1px solid #ffffff4a;
   border-left: 1px solid #ffffff4f;
 }
-
-/* Admin layout css ends here */
-
-
 /* Get Loan css starts from here */
 
 .get-loan-container{
@@ -31,7 +26,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     background: #242526;
     background-image: url("https://images.unsplash.com/photo-1496065187959-7f07b8353c55?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D");
     background-repeat: no-repeat;
@@ -40,10 +34,7 @@
     background-blend-mode: luminosity;
     border-top: 1px solid #ffffff4a;
     border-left: 1px solid #ffffff4f;
-
 }
-
-
 .loan-form{
     height: 280px;
     width: 400px;
@@ -55,7 +46,6 @@
     justify-content: space-around;
     border-radius: 5px;
     box-shadow: rgba(211, 201, 201, 0.35) 0px 5px 25px;
-    
 }
 .loan-form h1{
     font-size: 30px;
@@ -70,31 +60,24 @@
     align-items: center;
     width: 100%;
     padding: 10px 0px;
-    
-    
 }
 .loan-form-label{
     width: 100%;
     font-size: 20px;
     margin-bottom: 5px;
-    
-
 }
 .loan-form-input{
     width: 100%;
     padding: 10px ;
     outline: none;
     border: 1px solid rgba(128, 128, 128, 0.305);
-    -webkit-appearance: none;
-
-    
+    -webkit-appearance: none;   
 }
 .loan-form-button{
     width: 100%;
     padding: 8px ;
     font-size: 20px;
     background-color:#1677FF;
-    
 }
 .loan-form-button:hover{
     background-color: #0a0a0cc7;
@@ -110,22 +93,18 @@ input[type="number"] {
     -webkit-appearance: none; /* Webkit browsers (Chrome, Safari) */
     margin: 0; /* Optional: if you want to remove the gap */
   }
-
   .loan-detail-icon{
     font-size: 25px;
     cursor: pointer;
   }
-
-
   /* loan detail page starts from here */
   .loan-detail-container-main{
     height: 100%;
     width: 100%;
-    padding-top: 25vh;
+    
     display: flex;
-    justify-content: center;
-    align-items: center;}
-
+    justify-content: space-around;
+    }
 .loan-detail-container{
     height:300px ;
     width: 600px;
@@ -148,9 +127,6 @@ input[type="number"] {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     
 }
-
-
-
 .pay-loan-button{
     width: 100%;
     padding: 8px ;
@@ -165,10 +141,10 @@ input[type="number"] {
 }
 .pay-loan-popup{
     position: absolute;
-    top: 30%;
-    left: 55%;
+    top: 75%;
+    left: 75%;
     transform: translate(-50%, -50%);
-    background-color: rgba(197, 183, 183, 0.608);
+    background-color:#ffffffaf;
     padding: 20px;
     border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
@@ -176,8 +152,8 @@ input[type="number"] {
     border: 1px solid rgba(13, 11, 11, 0.77);
     flex-direction: column;
     justify-content: space-around;
-    
     height: 200px;
+    color: black;
     width: 400px;
 }
 .pay-loan-buttons{
@@ -187,8 +163,8 @@ input[type="number"] {
     left: 55%;
     top: 60%;
     margin-left: 10px;
+    cursor: pointer;
 
-    
 }
 #payloanamount{
     width: 100%;
@@ -197,7 +173,7 @@ input[type="number"] {
     border: none;
     background-color: transparent;
     border-bottom: 1px solid #6c6363ba;
-    color: white;
+    
     font-size: 25px;
 }
 .pay-loan-popup h1{
@@ -208,4 +184,35 @@ input[type="number"] {
 }
 .pay-loan-popup-hide{
     display: none;
+}
+
+.repayment{
+    height:max-content;
+    width: 400px;
+    background-color:#ffffffaf;
+    position: relative;
+    color: black;
+    min-height: 300px;
+    
+    border: 1px solid beige;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.repayment h1{
+    font-size: 27px;
+    font-weight: 100;
+    border-bottom: 1px solid black;
+    padding:5px 0px;
+    text-align: center;
+}
+.loandetailtable{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-weight: 100;
+}
+.loandetailtable th{
+    background-color: #72747661;
+    color: black;
+    font-weight: 200;
 }

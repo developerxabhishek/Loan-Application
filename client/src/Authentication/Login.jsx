@@ -10,7 +10,6 @@ import {
   setAdminStatus,
   setUserDetails,
 } from "../actions/actions";
-
 const Login = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
@@ -36,9 +35,7 @@ const Login = () => {
           theme: "light",
         });
       }
-
       const decodedToken = jwtDecode(res.data.token);
-
       // var jsonToken = JSON.stringify(decodedToken);
       Cookies.set("user_token", res.data.token);
       if (decodedToken.role === "admin") {
@@ -65,7 +62,6 @@ const Login = () => {
       });
     }
   };
-
   return (
     <>
       <div class="main-login">
@@ -78,7 +74,7 @@ const Login = () => {
           <img
             src="https://raw.githubusercontent.com/mattnicee7/Login-Dark/0600ddf21ff721f98269bab34498679340887a72/witch-animate.svg"
             class="left-login-image"
-            alt="Imagem animada"
+            alt="images"
             height="auto"
           />
         </div>

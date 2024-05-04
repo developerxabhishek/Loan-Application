@@ -47,7 +47,6 @@ const GetLoan = () => {
       });
     }
   };
-
   return (
     <>
       <div className="get-loan-container">
@@ -67,7 +66,6 @@ const GetLoan = () => {
               onChange={handleChange}
             />
           </div>
-
           <div>
             <label htmlFor="" className="loan-form-label">
               Loan Term (in Weeks)
@@ -90,5 +88,4 @@ const GetLoan = () => {
     </>
   );
 };
-
 export default GetLoan;

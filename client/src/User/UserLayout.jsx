@@ -3,8 +3,8 @@ import "./User.css";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
 import { Link, Outlet } from "react-router-dom";
-import { PiUsersThreeBold } from "react-icons/pi";
-import { MdFiberNew } from "react-icons/md";
+import { GiReceiveMoney } from "react-icons/gi";
+
 import Cookies from "js-cookie";
 import {
   setAdminStatus,
@@ -15,15 +15,11 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RiMoneyDollarCircleLine } from "react-icons/ri";
+import { GrMoney } from "react-icons/gr";
 
-import { MdAddTask } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
-
 import { Button, Layout, Menu, theme } from "antd";
-
 const { Header, Sider, Content } = Layout;
-
 const UserLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
@@ -53,11 +49,9 @@ const UserLayout = () => {
       console.log(error);
     }
   };
-
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
   if (isAdmin === false && isLogin === true) {
     return (
       <Layout>
@@ -77,18 +71,16 @@ const UserLayout = () => {
           >
             <Menu.Item
               key="1"
-              icon={<RiMoneyDollarCircleLine style={{ fontSize: "25px" }} />}
+              icon={<GrMoney style={{ fontSize: "25px" }} />}
             >
               <Link to="/user/all-user-loan">All Loans</Link>
             </Menu.Item>
             <Menu.Item
               key="2"
-              icon={<MdFiberNew style={{ fontSize: "25px" }} />}
+              icon={<GiReceiveMoney style={{ fontSize: "25px" }} />}
             >
               <Link to="/user/get-loan">Request Loan</Link>
             </Menu.Item>
-            
-
             <Menu.Item
               key="4"
               icon={
@@ -144,5 +136,4 @@ const UserLayout = () => {
     navigate("/");
   }
 };
-
 export default UserLayout;

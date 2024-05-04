@@ -1,0 +1,17 @@
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import dotenv from "dotenv";
+import connectDataBase from "./database/database.js";
+import Routes from "./routes/routes.js";
+import { routeNotFound, errorHandler } from "./middleware/errorMiddleware.js";
+dotenv.config();
+const app = express();
+connectDataBase();
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors());
+app.use("/api", Routes);
+app.use(routeNotFound);
+app.use(errorHandler);
+export default app;

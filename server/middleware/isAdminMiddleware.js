@@ -6,7 +6,6 @@ const isAdmin = async (req, res, next) => {
     return res.status(401).json({ message: "Unauthorized" });
   }
   const jwtToken = token.split(" ")[1];
-
   try {
     const decoded = jwt.verify(jwtToken, process.env.SECRET_KEY);
     const userId = decoded?.userId;
@@ -22,5 +21,4 @@ const isAdmin = async (req, res, next) => {
     return res.status(401).json({ message: "Invalid token" });
   }
 };
-
 export default isAdmin;

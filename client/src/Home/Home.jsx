@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const Slider = () => {
+const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentText, setCurrentText] = useState(0);
   const navigate = useNavigate();
@@ -120,4 +120,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default Home;

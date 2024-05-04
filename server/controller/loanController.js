@@ -33,7 +33,6 @@ export const updateLoanStatus = async (req, res) => {
     return res.status(500).json({ error: "Failed to update loan status" });
   }
 };
-
 // For Admin Only
 export const getAllLoans = async (req, res) => {
   try {
@@ -156,6 +155,9 @@ export const processRepayment = async (req, res) => {
 
     if (loan.status === "PAID") {
       return res.status(400).json({ error: "Loan already marked as PAID" });
+    }
+    if (loan.status === "PENDING") {
+      return res.status(400).json({ error: "Your loan is not approved yet.." });
     }
 
     let totalAmountPaid = amountPaid;

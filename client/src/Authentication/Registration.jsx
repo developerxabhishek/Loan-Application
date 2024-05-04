@@ -2,7 +2,6 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 const GetLoan = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
@@ -54,16 +53,14 @@ const GetLoan = () => {
           <img
              src="https://raw.githubusercontent.com/mattnicee7/Login-Dark/0600ddf21ff721f98269bab34498679340887a72/witch-animate.svg"
             class="left-login-image"
-            alt="Imagem animada"
+            alt="images"
             height="auto"
-            
           />
         </div>
 
         <div className="right-login">
           <div className="card-login">
             <h1>REGISTER</h1>
-
             <div className="textfield">
               <label for="fullName">Name</label>
               <input

@@ -1,19 +1,28 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
+
 const LoanDetail = () => {
-  const { loanid } = useParams();
-  const [loan, setLoan] = useState({});
   const [isActive, setIsActive] = useState(false);
+  const [loan, setLoan] = useState({});
+  const [scheduledRepayments, setScheduledRepayments] = useState([]);
   const [amount, setAmount] = useState("");
+  const { loanid } = useParams();
   const token = Cookies.get("user_token");
+
   const toggleClass = () => {
     setIsActive(!isActive);
   };
 
-  const getloan = async () => {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { day: "2-digit", month: "2-digit", year: "2-digit" };
+    return date.toLocaleDateString("en-GB", options);
+  };
+
+  const getLoan = async () => {
     try {
       const res = await axios.get(
         `http://localhost:5000/api/loans/getLoanDetails/${loanid}`,
@@ -24,10 +33,11 @@ const LoanDetail = () => {
           },
         }
       );
-      console.log(res.data);
       setLoan(res.data);
+      setScheduledRepayments(res.data.scheduledRepayments || []);
+      console.log(res.data);
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     }
   };
 
@@ -59,10 +69,9 @@ const LoanDetail = () => {
             theme: "light",
           });
         });
-
-      console.log(res);
+      getLoan();
     } catch (error) {
-      toast.success("Loan Repayment Successfull", {
+      toast.error(error.message+"  "+ error.response.data.error, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -72,16 +81,42 @@ const LoanDetail = () => {
         progress: undefined,
         theme: "light",
       });
-      
     }
   };
 
   useEffect(() => {
-    getloan();
+    getLoan();
   }, []);
+
   return (
     <>
       <div className="loan-detail-container-main">
+        <div className="repayment">
+          <h1>Scheduled Repayments</h1>
+          <table className="loandetailtable">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {scheduledRepayments.map((key, index) => {
+                return (
+                  <tr key={index}>
+                    <td data-column="S.No">{index + 1}</td>
+                    <td data-column="Amount">{key.amount}</td>
+                    <td data-column="Status">{key.status}</td>
+                    <td data-column="Date">{formatDate(key.date)}</td>{" "}
+                    {/* Convert date to readable format */}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
         <div className="loan-detail-container">
           <div className="loan-detail-item">
             <p>Loan ID</p>
@@ -105,14 +140,14 @@ const LoanDetail = () => {
             </button>
           </div>
         </div>
-
         <div className={isActive ? "pay-loan-popup" : "pay-loan-popup-hide"}>
           <h1>Pay Your Loan</h1>
           <label htmlFor="">Enter Your Amount</label>
           <input
             type="number"
-            id="payloanamount"
+            name="amountPaid"
             value={amount}
+            id="payloanamount"
             onChange={(e) => {
               setAmount(e.target.value);
             }}
@@ -123,12 +158,12 @@ const LoanDetail = () => {
               style={{ backgroundColor: "green" }}
               onClick={payLoan}
             >
-              Pay Loan
+              Pay
             </button>
-
             <button
               className="pay-loan-buttons"
               style={{ backgroundColor: "red" }}
+              onClick={toggleClass}
             >
               Cancel
             </button>
@@ -138,4 +173,5 @@ const LoanDetail = () => {
     </>
   );
 };
+
 export default LoanDetail;

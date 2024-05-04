@@ -19,18 +19,15 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
         </Route>
-
         <Route path="/user" element={<UserLayout />}>
           <Route index element={<AllUserLoans />} />
           <Route path="/user/all-user-loan" element={<AllUserLoans />} />
           <Route path="/user/get-loan" element={<GetLoan />} />
           <Route path="/user/loan-detail/:loanid" element={<LoanDetail />} />
         </Route>
-
         <Route path="/admin" element={<AdminLayout />} />
       </Routes>
     </>
   );
 };
-
 export default App;
