@@ -1,6 +1,3 @@
-
-Certainly! Below is a template for your README file:
-
 Loan Application System
 Description
 This is a loan application system built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to apply for loans, and administrators to review and approve these loan applications. The system also features protected routes and role-based authentication to ensure security and privacy.
