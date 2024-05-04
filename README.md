@@ -27,7 +27,7 @@ cd server && npm install
 Set up environment variables:
 Create a .env file in the server directory.
 Define the following environment variables:
-PORT=3001
+
 SECRET_KEY=<your jwtkey>
 MONGODB_SERVER_PORT="mongodb://127.0.0.1:27017/techdom"
 PORT=5000
