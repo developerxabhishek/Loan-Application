@@ -1,0 +1,80 @@
+.user-container-main{
+	height: auto;
+    min-height: 100vh;
+	width: 100vw;
+	background-color: red;
+padding-bottom: 5vh;
+	background: #242526;
+  background-image: url("https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: luminosity;
+}
+.user{
+    width: 100vw;
+    height: auto;
+	
+}
+.user-nav{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5vw;
+    align-items: center;
+    color: white;
+    border-bottom: 1px solid white;
+}
+.logout-button{
+    font-size: 30px;
+	cursor: pointer;
+    
+}
+
+.update-task{
+    font-size: 25px;
+    cursor: pointer;
+    color: rgba(51, 6, 158, 0.768);
+}
+
+
+.confirmation-box{
+    height: 12220px;
+    width: 400px;
+    background-color:#fffffff0;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    padding: 10px 10px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+   }
+
+   .confirmation-box-buttons{
+    margin-left: 60%;
+    position: absolute;
+    top: 75%;
+   }
+   
+
+   .confirmation-box-buttons button{
+    padding: 5px 20px ;
+    color: white;
+    margin-left: 10px;
+   }
+   .confirmation-box h2{
+    font-weight: 400;
+   }
+
+   .confirmation-box p{
+    margin-top: 10px;
+   }
+   .confirmation-box-hide{
+    display: none;
+   }
+   #isAdmin{
+    width: 100%;
+    height: 20%;
+   }

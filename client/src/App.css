@@ -1,0 +1,475 @@
+/* navbar and hero section css starts from here */
+
+
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  margin: auto;
+  padding: 20px 75px;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.logo h2 {
+  color: #141534;
+  
+}
+
+.btn-menubar {
+  outline: none;
+  border: none;
+  padding: 10px 10px 4px 10px;
+  color: #fff;
+  background-color: #141534;
+  display: flex;
+}
+
+.btn-menubar svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+  margin-bottom: 0;
+}
+
+.lg-hidden {
+  display: none;
+}
+
+.menu_left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 55px;
+
+}
+
+.btn-contact {
+  border: none;
+  outline: none;
+  padding: 8px 18px;
+  color: #fff;
+  background-color: #141534;
+}
+
+.menu-li .menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.menu-li .menu a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 15px;
+}
+
+.card {
+  position: relative;
+  margin: 20px 75px;
+  isolation: isolate;
+}
+
+.card .bottom {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  display: flex;
+  width: 100%;
+  z-index: 1;
+  justify-content: space-between;
+}
+
+.card .bottom button {
+  border: none;
+  padding: 15px 20px;
+  color: inherit;
+  background-color: #fff;
+}
+
+.card .card-img {
+  width: 100%;
+  height: 80vh;
+  transition: display 2s ease-in;
+  z-index: 0;
+}
+
+.card img {
+  position: absolute;
+  display: none;
+  top: 0px;
+  left: 0px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.card img.active,
+.text-data.active {
+  display: block !important;
+}
+
+.text-content {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0px;
+  height: 80vh;
+  z-index: 1;
+  display: flex;
+  padding: 0 100px;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000075;
+}
+
+.text-content .text-data {
+  display: none;
+  text-align: center;
+}
+
+.text-content .text-data h1 {
+  font-size: 4rem;
+  color: #fff;
+  text-shadow: 2px 4px 10px #000;
+  margin-bottom: .5rem;
+}
+
+.text-content .text-data p {
+  font-size: 1rem;
+  color: #fff;
+  text-shadow: 2px 4px 10px #000;
+  margin-bottom: 1rem;
+}
+
+.text-content .text-data button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background-color: #141534;
+}
+
+
+@media (max-width:900px) {
+  .sm-hidden {
+      display: none;
+  }
+
+  .lg-hidden {
+      display: block;
+  }
+
+  .navbar {
+      position: relative;
+      padding: 10px 25px;
+  }
+
+  .menu-li {
+      position: fixed;
+      top: -550px;
+      left: 0px;
+      color: inherit;
+      background-color: #fff;
+      padding: 10px 25px;
+      width: 100%;
+      opacity: 0;
+      z-index: -1;
+      visibility: hidden;
+      transition: all 1s ease;
+      transform-origin: bottom;
+  }
+
+  .menu-li.active {
+      left: 0;
+      top: 60px;
+      opacity: 1;
+      visibility: visible;
+  }
+
+  .menu-li .menu {
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+  }
+
+  .card {
+      margin: 10px 25px;
+  }
+
+  .text-content {
+      padding: 0px 50px;
+  }
+
+  .text-content .text-data h1 {
+      font-size: 2.5rem;
+  }
+
+  .text-content .text-data p {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
+  }
+}
+
+@media (max-width:768px) {
+  .text-content {
+      padding: 0px 10px;
+  }
+
+  .text-content .text-data h1 {
+      font-size: 2rem;
+  }
+
+}
+/* Navbar and hero section Css Ends here */
+
+/* css of login register and all the forms starts from here */
+
+.main-login {
+  width: 100vw; /* vw: porcentagem da largura da sua viewport(tela) */
+  height: 90vh;
+  background: #201b2c;
+  display: flex;
+  justify-content: center; /* centraliza no eixo x */
+  align-items: center;
+}
+
+.left-login {
+  width: 50vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center; /* centraliza no eixo x */
+  align-items: center;
+  flex-direction: column;
+}
+
+.left-login > h1 { /* Todos h1 dentro da div left-login */
+  font-size: 2.5vw;
+  color: #77ffc0;
+  margin-top: 20px;
+}
+
+.left-login-image {
+  width: 35vw;
+}
+
+.right-login {
+  width: 50vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center; /* centraliza no eixo x */
+  align-items: center;
+}
+
+.card-login {
+  width: 60%; 
+  display: flex;
+  justify-content: center; /* centraliza no eixo x */
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 35px; 
+  background: #2f2841;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px #00000056; /* 1 valor é o eixo x, 2 valor é eixo y, 3 valor é blur, 4 valor é cor */
+}
+
+.card-login > h1 { /* pega todos h1 dentro da div .card-login */
+  color: #0f8;
+  font-weight: 800;
+  margin: 0;
+}
+
+.textfield {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0px;
+}
+
+.textfield > input {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: #514869;
+  color: #f0ffffde;
+  font-size: 12pt;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.textfield > label {
+  color: #f0ffffde;
+  margin-bottom: 10px;
+}
+
+.textfield > input::placeholder {
+  color: #f0ffff94;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 16px 0px;
+  margin: 25px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #2b134b;
+  background: #0f8;
+  cursor: pointer;
+  box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+
+.btn-cadastre-se {
+  font-family: 'Noto Sans', sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.span-cadastre-se {
+  color: #0f8;
+}
+
+@media only screen and (max-width: 950px) {
+  .card-login {
+      width: 85%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-login {
+      flex-direction: column;
+      padding-bottom: 30px;
+      height: auto;
+  }
+
+  .left-login > h1 {
+      display: none;
+  }
+
+  .left-login {
+      width: 100%;
+      height: auto;
+  }
+
+  .right-login {
+      width: 100%;
+      height: auto;
+  }
+
+  .left-login-image {
+      width: 50vw;
+  }
+
+  .card-login {
+      width: 90%;
+  }
+
+  .btn-plus {
+      width: 100%;
+  }
+}
+
+/* css of login register and all the forms ends here */
+ /* table  css starts from here */
+  
+  table { 
+    width: 90%; 
+    border-collapse: collapse; 
+    margin:50px auto;
+    color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  
+    }
+  
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #fbfaf7e6; 
+    }
+    tr:nth-of-type(even) { 
+      background: #a09e9eb6; 
+      
+      }
+  th { 
+    background: #48494a; 
+    /* color: rgb(10, 10, 10);  */
+    color: #fff;
+    font-weight: bold; 
+    }
+  
+  td, th { 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: center; 
+    font-size: 18px;
+    }
+  
+  /* 
+  Max width before this PARTICULAR table gets nasty
+  This query will take effect for any screen smaller than 760px
+  and also iPads specifically.
+  */
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+  
+    table { 
+        width: 100%; 
+    }
+  
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; }
+    
+    td { 
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      padding-left: 50%; 
+    }
+  
+    td:before { 
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+      /* Label the data */
+      content: attr(data-column);
+  
+      color: #000;
+      font-weight: bold;
+    }
+  
+  }
+  
+  /* table css ends here */
