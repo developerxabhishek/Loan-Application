@@ -37,7 +37,7 @@ Start the frontend development server:
 Open your browser and navigate to http://localhost:3000 to access the application.
 Usage
 Register as a user or login as an admin.
-for registering as an admin you have to an api reqest where you will have assign role to admin or directally manupulate the database and assign admin role to your account...
+for registering as an admin you have to an api request where you will have assign role to admin or directally manupulate the database and assign admin role to your account...
 now login and you will be redirected to the appropriate dashboard (user or admin).
 Apply for a loan (user) or review loan applications and approve/reject them (admin).
 Logout when done.
