@@ -154,65 +154,7 @@ export const LoanDetails = async (req, res) => {
   }
 };
 
-/*
-export const PayLoan = async (req, res) => {
-  try {
-    const loanId = req.params.loanId;
 
-    const { amountPaid } = req.body;
-
-    const loan = await Loan.findById(loanId);
-
-    if (!loan) {
-      return res.status(404).json({ error: "Loan not found" });
-    }
-
-    if (loan.status === "PAID") {
-      return res.status(400).json({ error: "Loan already marked as PAID" });
-    }
-    if (loan.status === "PENDING") {
-      return res.status(400).json({ error: "Your loan is not approved yet.." });
-    }
-
-    if (loan.status === "REJECTED") {
-      return res.status(400).json({ error: "Your loan is rejected.." });
-    }
-
-    let totalAmountPaid = amountPaid;
-
-    for (const repayment of loan.scheduledRepayments) {
-      if (
-        repayment.status === "PENDING" ||
-        repayment.status === "PARTIALLY PAID"
-      ) {
-        if (totalAmountPaid >= repayment.amount) {
-          totalAmountPaid -= repayment.amount;
-          repayment.amount = 0;
-          repayment.status = "PAID";
-        } else if (totalAmountPaid === 0) break;
-        else {
-          repayment.amount -= totalAmountPaid;
-          repayment.status = "PARTIALLY PAID";
-          break;
-        }
-      }
-    }
-    const allRepaymentsPaid = loan.scheduledRepayments.every(
-      (repayment) => repayment.status === "PAID"
-    );
-
-    if (allRepaymentsPaid) {
-      loan.status = "PAID";
-    }
-
-    await loan.save();
-
-    res.status(200).json({ message: "Repayments processed successfully" });
-  } catch (error) {
-    console.error("Error processing repayments:", error);
-    res.status(500).json({ error: "Failed to process repayments" });
-  }
-};*/
 
 export const PayLoan = async (req, res) => {
   try {
