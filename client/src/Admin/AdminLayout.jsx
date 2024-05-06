@@ -107,109 +107,105 @@ const User = () => {
   if (isAdmin === true && isLogin === true) {
     return (
       <>
-        {loans.length > 0 ? (
-          <div className="alltaskdiv">
-            <div className="user-container-main">
-              <div className="user">
-                <div className="user-nav">
-                  <h1>QuickCredit</h1>
-                  <p>
-                    <IoIosLogOut className="logout-button" onClick={Logout} />
-                  </p>
-                </div>
-                <div className="user-task">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>S.No</th>
-                        <th>Name</th>
-                        <th>Amount</th>
-                        <th>Term</th>
-                        <th>Status</th>
-                        <th>Change Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {loans.map((key, index) => {
-                        return (
-                          <tr>
-                            <td data-column="S.No">{index + 1}</td>
-                            <td data-column="Name">{key.fullName}</td>
-                            <td data-column="Amount">{key.amount}</td>
-                            <td data-column="Term">{key.term}</td>
-
-                            <td data-column="Status">{key.status}</td>
-                            <td
-                              data-column="Change Status"
-                              onClick={() => {
-                                setTaskid(key._id);
-                                toggleClass();
-                              }}
-                            >
-                              <MdEditSquare
-                                className="update-task"
-                                style={{ color: "black" }}
-                              />
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
+        <div className="alltaskdiv">
+          <div className="user-container-main">
+            <div className="user">
+              <div className="user-nav">
+                <h1>QuickCredit</h1>
+                <p>
+                  <IoIosLogOut className="logout-button" onClick={Logout} />
+                </p>
               </div>
-              <div
-                className={
-                  isActive ? "confirmation-box" : "confirmation-box-hide"
-                }
-                style={{ height: "180px" }}
-              >
-                <h2>Confirm Please</h2>
-                <hr size="1" color="brown" />
-                <p>Do you Really want to update the status of this Loan ? </p>
-                <div className="input_container">
-                  <label>Status : </label>
-                  <br />
-                  <select
-                    name="status"
-                    id="isAdmin"
-                    value={updatedStatus}
-                    onChange={(e) => {
-                      setUpdatedStatus(e.target.value);
-                    }}
-                    style={{ height: "30px" }}
-                  >
-                    <option value="PENDING" style={{ color: "orange" }}>
-                      Pending
-                    </option>
-                    <option value="APPROVED" style={{ color: "green" }}>
-                      APPROVED
-                    </option>
-                    <option value="REJECTED" style={{ color: "red" }}>
-                      REJECTED
-                    </option>
-                  </select>
-                </div>
-                <div className="confirmation-box-buttons">
-                  <button
-                    style={{ backgroundColor: "green" }}
-                    onClick={updateTaskStatus}
-                  >
-                    Yes
-                  </button>
-                  <button
-                    style={{ backgroundColor: "red" }}
-                    onClick={toggleClass}
-                  >
-                    No
-                  </button>
-                </div>
+              <div className="user-task">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>S.No</th>
+                      <th>Name</th>
+                      <th>Amount</th>
+                      <th>Term</th>
+                      <th>Status</th>
+                      <th>Change Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {loans.map((key, index) => {
+                      return (
+                        <tr>
+                          <td data-column="S.No">{index + 1}</td>
+                          <td data-column="Name">{key.fullName}</td>
+                          <td data-column="Amount">{key.amount}</td>
+                          <td data-column="Term">{key.term}</td>
+
+                          <td data-column="Status">{key.status}</td>
+                          <td
+                            data-column="Change Status"
+                            onClick={() => {
+                              setTaskid(key._id);
+                              toggleClass();
+                            }}
+                          >
+                            <MdEditSquare
+                              className="update-task"
+                              style={{ color: "black" }}
+                            />
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div
+              className={
+                isActive ? "confirmation-box" : "confirmation-box-hide"
+              }
+              style={{ height: "180px" }}
+            >
+              <h2>Confirm Please</h2>
+              <hr size="1" color="brown" />
+              <p>Do you Really want to update the status of this Loan ? </p>
+              <div className="input_container">
+                <label>Status : </label>
+                <br />
+                <select
+                  name="status"
+                  id="isAdmin"
+                  value={updatedStatus}
+                  onChange={(e) => {
+                    setUpdatedStatus(e.target.value);
+                  }}
+                  style={{ height: "30px" }}
+                >
+                  <option value="PENDING" style={{ color: "orange" }}>
+                    Pending
+                  </option>
+                  <option value="APPROVED" style={{ color: "green" }}>
+                    APPROVED
+                  </option>
+                  <option value="REJECTED" style={{ color: "red" }}>
+                    REJECTED
+                  </option>
+                </select>
+              </div>
+              <div className="confirmation-box-buttons">
+                <button
+                  style={{ backgroundColor: "green" }}
+                  onClick={updateTaskStatus}
+                >
+                  Yes
+                </button>
+                <button
+                  style={{ backgroundColor: "red" }}
+                  onClick={toggleClass}
+                >
+                  No
+                </button>
               </div>
             </div>
           </div>
-        ) : (
-          <p className="noloanfound">Nothing to Display Here</p>
-        )}
+        </div>
       </>
     );
   } else {
