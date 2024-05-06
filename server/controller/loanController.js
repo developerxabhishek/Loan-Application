@@ -154,8 +154,6 @@ export const LoanDetails = async (req, res) => {
   }
 };
 
-
-
 export const PayLoan = async (req, res) => {
   try {
     const loanId = req.params.loanId;
