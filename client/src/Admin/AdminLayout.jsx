@@ -44,15 +44,15 @@ const User = () => {
         theme: "light",
       });
       navigate("/");
-      console.log(res.data);
+      
     } catch (error) {
-      console.log(error);
+      
     }
   };
 
   const updateTaskStatus = async (id) => {
     try {
-      await axios.put(
+      const res = await axios.put(
         `http://localhost:5000/api/loans/updateLoanStatus/${taskId}`,
         {
           newStatus: updatedStatus,
@@ -63,11 +63,30 @@ const User = () => {
           },
         }
       );
-      toast.success("loan updated successfully");
+
+      toast.success(` ${res.status}  ${res.data.message}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       toggleClass();
       getLoans();
     } catch (err) {
-      console.log(err);
+      toast.error(` ${err}  ${err.response.data.error}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
@@ -83,7 +102,7 @@ const User = () => {
       );
       setLoans(res.data);
     } catch (error) {
-      console.log(error);
+      
     }
   };
   useEffect(() => {

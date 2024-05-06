@@ -10,7 +10,7 @@ const AllUserLoans = () => {
   const userID = useSelector((state) => state.user.userId);
   const navigate = useNavigate();
   const token = Cookies.get("user_token");
-  console.log(loans);
+  
   const getLoans = async () => {
     try {
       const res = await axios.get(
@@ -22,10 +22,10 @@ const AllUserLoans = () => {
         }
       );
 
-      console.log(res.data);
+      
       setLoans(res.data);
     } catch (error) {
-      console.log(error);
+      
     }
   };
 

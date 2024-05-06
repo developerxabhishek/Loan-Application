@@ -7,7 +7,7 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     const users = await User.find({ email });
     const user = users[0];
-    console.log(user);
+    
 
     if (!user) {
       return res.status(401).json({ error: "User Not Exist" });

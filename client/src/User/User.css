@@ -103,6 +103,8 @@ input[type="number"] {
     width: 100%;
     
     display: flex;
+    
+
     justify-content: space-around;
     }
 .loan-detail-container{
@@ -216,3 +218,33 @@ input[type="number"] {
     color: black;
     font-weight: 200;
 }
+
+@media (max-width: 900px) {
+    .loan-detail-container-main{
+        flex-wrap: wrap-reverse;
+        justify-content: space-around;
+    }
+    .repayment{
+        margin-top: 30px;
+    }
+    .pay-loan-popup{
+        position: absolute;
+        /* top: 75%; */
+        top: 30%;
+        left: 50%;
+        background-color: #fff;
+        width: 300px;
+    }
+  }
+  @media (max-width: 500px) {
+    
+    .pay-loan-popup{
+        position: absolute;
+        top: 30%;
+        
+        left: 60%;
+        
+    }
+    
+  }
+  

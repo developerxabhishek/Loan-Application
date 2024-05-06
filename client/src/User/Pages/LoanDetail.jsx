@@ -35,16 +35,16 @@ const LoanDetail = () => {
       );
       setLoan(res.data);
       setScheduledRepayments(res.data.scheduledRepayments || []);
-      console.log(res.data);
+      
     } catch (err) {
-      console.log(err);
+      
     }
   };
 
   const payLoan = async () => {
     toggleClass();
     try {
-      const res = await axios
+       await axios
         .post(
           `http://localhost:5000/api/loans/processRepayment/${loan._id}`,
           {

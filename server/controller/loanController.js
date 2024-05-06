@@ -1,27 +1,39 @@
 import Loan from "../models/LoanModel.js";
-
 export const updateLoanStatus = async (req, res) => {
   try {
     const { loanId } = req.params;
     const { newStatus } = req.body;
-
     // Validate new status
     const allowedStatusValues = ["PENDING", "APPROVED", "PAID", "REJECTED"];
     if (!allowedStatusValues.includes(newStatus)) {
       return res.status(400).json({ error: "Invalid status value" });
     }
-
     // Find the loan by ID
     const loan = await Loan.findById(loanId);
-
     // If loan not found, return 404
     if (!loan) {
       return res.status(404).json({ error: "Loan not found" });
     }
+    // Check if loan status is already not pending
+    if (loan.status !== "PENDING") {
+      return res
+        .status(400)
+        .json({ error: "Loan status is not pending, cannot be updated" });
+    }
 
+    if (newStatus === "PENDING" && loan.status === "PENDING") {
+      return res.status(400).json({ error: "Loan status is already pending " });
+    }
+    // If new status is APPROVED and loan status is already approved, send response
+    if (newStatus === "APPROVED" && loan.status === "APPROVED") {
+      return res.status(400).json({ error: "Loan is already approved" });
+    }
+    // If new status is REJECTED and loan status is already rejected, send response
+    if (newStatus === "REJECTED" && loan.status === "REJECTED") {
+      return res.status(400).json({ error: "Loan is already rejected" });
+    }
     // Update loan status
     loan.status = newStatus;
-
     // Save updated loan
     await loan.save();
 
@@ -33,6 +45,7 @@ export const updateLoanStatus = async (req, res) => {
     return res.status(500).json({ error: "Failed to update loan status" });
   }
 };
+
 // For Admin Only
 export const getAllLoans = async (req, res) => {
   try {
@@ -53,7 +66,7 @@ export const getAllLoans = async (req, res) => {
   }
 };
 
-export const createLoan = async (req, res) => {
+export const askForLoan = async (req, res) => {
   try {
     const userId = req.params.userId;
 
@@ -125,7 +138,7 @@ export const getUserLoans = async (req, res) => {
   }
 };
 
-export const getLoanDetails = async (req, res) => {
+export const LoanDetails = async (req, res) => {
   try {
     const loanId = req.params.loanId;
     const loan = await Loan.findOne({ _id: loanId });
@@ -141,7 +154,8 @@ export const getLoanDetails = async (req, res) => {
   }
 };
 
-export const processRepayment = async (req, res) => {
+/*
+export const PayLoan = async (req, res) => {
   try {
     const loanId = req.params.loanId;
 
@@ -158,6 +172,10 @@ export const processRepayment = async (req, res) => {
     }
     if (loan.status === "PENDING") {
       return res.status(400).json({ error: "Your loan is not approved yet.." });
+    }
+
+    if (loan.status === "REJECTED") {
+      return res.status(400).json({ error: "Your loan is rejected.." });
     }
 
     let totalAmountPaid = amountPaid;
@@ -179,6 +197,89 @@ export const processRepayment = async (req, res) => {
         }
       }
     }
+    const allRepaymentsPaid = loan.scheduledRepayments.every(
+      (repayment) => repayment.status === "PAID"
+    );
+
+    if (allRepaymentsPaid) {
+      loan.status = "PAID";
+    }
+
+    await loan.save();
+
+    res.status(200).json({ message: "Repayments processed successfully" });
+  } catch (error) {
+    console.error("Error processing repayments:", error);
+    res.status(500).json({ error: "Failed to process repayments" });
+  }
+};*/
+
+export const PayLoan = async (req, res) => {
+  try {
+    const loanId = req.params.loanId;
+    const { amountPaid } = req.body;
+
+    const loan = await Loan.findById(loanId);
+
+    if (!loan) {
+      return res.status(404).json({ error: "Loan not found" });
+    }
+
+    if (loan.status === "PAID") {
+      return res.status(400).json({ error: "Loan already marked as PAID" });
+    }
+
+    if (loan.status === "PENDING") {
+      return res.status(400).json({ error: "Your loan is not approved yet.." });
+    }
+
+    if (loan.status === "REJECTED") {
+      return res.status(400).json({ error: "Your loan is rejected.." });
+    }
+
+    let totalAmountPaid = amountPaid;
+
+    // Calculate remaining repayment amount
+    const remainingRepaymentAmount = loan.scheduledRepayments.reduce(
+      (total, repayment) => {
+        if (
+          repayment.status === "PENDING" ||
+          repayment.status === "PARTIALLY PAID"
+        ) {
+          return total + repayment.amount;
+        }
+        return total;
+      },
+      0
+    );
+
+    // Check if the total amount paid exceeds the remaining repayment amount
+    if (totalAmountPaid > remainingRepaymentAmount) {
+      return res.status(400).json({
+        error: `Your repayment amount is only ${remainingRepaymentAmount}`,
+      });
+    }
+
+    // Process repayments
+    for (const repayment of loan.scheduledRepayments) {
+      if (
+        repayment.status === "PENDING" ||
+        repayment.status === "PARTIALLY PAID"
+      ) {
+        if (totalAmountPaid >= repayment.amount) {
+          totalAmountPaid -= repayment.amount;
+          repayment.amount = 0;
+          repayment.status = "PAID";
+        } else if (totalAmountPaid === 0) {
+          break;
+        } else {
+          repayment.amount -= totalAmountPaid;
+          repayment.status = "PARTIALLY PAID";
+          break;
+        }
+      }
+    }
+
     const allRepaymentsPaid = loan.scheduledRepayments.every(
       (repayment) => repayment.status === "PAID"
     );
