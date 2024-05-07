@@ -35,7 +35,7 @@ const User = () => {
       dispatch(setUserDetails(""));
       toast.success(res.data.message, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
