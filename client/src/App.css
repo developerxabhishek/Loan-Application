@@ -530,17 +530,9 @@
   
   /* loader part css starts from here */
   
-  .loader-container{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: bisque;
-    overflow: hidden;
-  }
+  
   .loader-img{
-    height: 100%;
+    height: 100vh;
     width: 100vw;
   }
   /* loader part css ends here */
